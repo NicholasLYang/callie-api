@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909210033) do
+ActiveRecord::Schema.define(version: 20170909211100) do
 
   create_table "calls", force: :cascade do |t|
     t.integer "duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "entities", force: :cascade do |t|
+    t.string "name"
+    t.string "wikipedia_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
