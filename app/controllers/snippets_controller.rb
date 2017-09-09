@@ -1,5 +1,8 @@
+require "google/cloud/language"
+
 class SnippetsController < ApplicationController
   before_action :set_snippet, only: [:show, :update, :destroy]
+  before_action :set_language, only: [:create, :update]
 
   # GET /snippets
   def index
@@ -15,6 +18,10 @@ class SnippetsController < ApplicationController
 
   # POST /snippets
   def create
+    document = @language.document params[:transcript]
+    document.entities.each do |entity|
+      puts entity.name
+    end
     @snippet = Snippet.new(snippet_params)
 
     if @snippet.save
@@ -44,6 +51,10 @@ class SnippetsController < ApplicationController
       @snippet = Snippet.find(params[:id])
     end
 
+    def set_language
+      project_id = "callie-api-179417"
+      @language = Google::Cloud::Language.new project: project_id
+    end
     # Only allow a trusted parameter "white list" through.
     def snippet_params
       params.require(:snippet).permit(:call_id, :transcript)
