@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  call_id: 1
+  transcript: MyString
+
+two:
+  call_id: 1
+  transcript: MyString
