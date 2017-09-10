@@ -18,7 +18,7 @@ class ReferencesController < ApplicationController
     @reference = Reference.new(reference_params)
 
     if @reference.save
-      render json: @reference, status: :created, location: @reference
+      render json: { references: Reference.all, snippets: Snippet.all, entities: Entity.all }.to_json , status: :created, location: @reference
     else
       render json: @reference.errors, status: :unprocessable_entity
     end
