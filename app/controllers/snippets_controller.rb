@@ -57,6 +57,6 @@ class SnippetsController < ApplicationController
     end
     # Only allow a trusted parameter "white list" through.
     def snippet_params
-      params.require(:snippet).permit(:call_id, :transcript)
+      params.require(:snippet).permit(:call_id, :transcript, :participant)
     end
 end
